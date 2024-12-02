@@ -1,0 +1,10 @@
+# Ignorer l'environnement virtuel
+../venv/
+
+# Ignorer les fichiers de cache Python
+__pycache__/
+*.pyc
+
+# Ignorer les fichiers de configuration sensible
+*.env
+config.yaml
