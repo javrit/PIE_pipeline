@@ -3,11 +3,14 @@
 
 from aestream import FileInput
 
-def load_raw(file_path : str, shape : tuple, device : str = "cpu"):
+def load_stream_raw(file_path : str, shape : tuple):
     # Open a file while specifying it's shape (shape[0], shape[1]) and its device ("cpu")
     # By default, we send the tensors to the CPU with Numpy
     #   - if you have a PyTorch installation with a GPU, try changing this to "cuda"
     
-    events = FileInput(file_path, shape, device).load()
-    
-    return events
+    with FileInput(file_path, shape,) as stream:
+        while True:
+            frame = stream.read("numpy") # Or "jax" or "numpy" or "torch"
+            print(frame)
+            
+    return 0
